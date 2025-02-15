@@ -56,3 +56,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "hirb", "~> 0.7.3"
+
+gem "httparty", "~> 0.22.0"
