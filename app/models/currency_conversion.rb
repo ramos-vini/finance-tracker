@@ -14,6 +14,8 @@ class CurrencyConversion < ApplicationRecord
           high: high_level_key["high"],
           low: high_level_key["low"],
           last_updated_at: high_level_key["create_date"])
+
+        return current_currency_conversion 
       else 
         self.create(
           conversion_code: conversion_code,
@@ -22,9 +24,12 @@ class CurrencyConversion < ApplicationRecord
           high: high_level_key["high"],
           low: high_level_key["low"],
           last_updated_at: high_level_key["create_date"])
+
+        return CurrencyConversion.last  
       end
 
     else
+      # TODO: return JSON response || return false
       puts(response)
     end
   end

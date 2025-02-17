@@ -1,0 +1,35 @@
+<h1>My Portfolio</h1>
+
+<h3>Search for a Currency Conversion:</h3>
+
+<%= form_with url: currency_conversions_search_path, method: :get do %>
+  <% currency_options = ["AUD", "BRL", "CAD", "CHF", "CNY", "EUR", "GBP", "HKD", "INR", "JPY", "KRW", "MXN", "NOK", "NZD", "RUB", "SEK", "SGD", "TRY", "USD", "ZAR",] %>  
+  <div>
+    <%= label_tag :code, "Select the 1st currency code:" %>
+    <%= select_tag :code, options_for_select(currency_options), prompt: "Choose a currency" %>
+  </div>
+  <br>
+
+  <div>
+    <%= label_tag :codein, "Select the 2nd currency code:" %>
+    <%= select_tag :codein, options_for_select(currency_options), prompt: "Choose a currency" %>
+  </div>
+  <br>
+
+  <%= submit_tag "Search" %>
+<% end %>
+<br>
+
+<% if @currency_conversion %>
+    <div style="border: solid 1px black">
+        <h4><%= @currency_conversion.conversion_code %></h4>
+        <p>
+            <span><strong>Code: </strong><%= @currency_conversion.code %>;</span>
+            <span><strong>Codein: </strong><%= @currency_conversion.codein %>;</span>
+            <span><strong>High: </strong><%= @currency_conversion.high %>;</span>
+            <span><strong>Low: </strong><%= @currency_conversion.low %>.</span>
+        </p>
+    </div>
+<% end %>
+
+
