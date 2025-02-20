@@ -60,3 +60,5 @@ end
 gem "hirb", "~> 0.7.3"
 
 gem "httparty", "~> 0.22.0"
+
+gem "byebug", "~> 11.1"
