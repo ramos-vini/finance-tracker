@@ -1,0 +1,2 @@
+class UserCurrencyConversionsController < ApplicationController
+end

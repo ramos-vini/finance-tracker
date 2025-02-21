@@ -1,6 +1,9 @@
 require 'httparty'
 
 class CurrencyConversion < ApplicationRecord
+  has_many :user_currency_conversions
+  has_many :user, through: :user_currency_conversions
+
   def self.fetch_and_create(code, codein)
     response = HTTParty.get("https://economia.awesomeapi.com.br/last/#{code}-#{codein}")
 

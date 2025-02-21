@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_15_231415) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_21_205259) do
   create_table "currency_conversions", force: :cascade do |t|
     t.string "code"
     t.string "codein"
@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_15_231415) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "conversion_code"
+  end
+
+  create_table "user_currency_conversions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "currency_conversion_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_conversion_id"], name: "index_user_currency_conversions_on_currency_conversion_id"
+    t.index ["user_id"], name: "index_user_currency_conversions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +42,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_15_231415) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "user_currency_conversions", "currency_conversions"
+  add_foreign_key "user_currency_conversions", "users"
 end
