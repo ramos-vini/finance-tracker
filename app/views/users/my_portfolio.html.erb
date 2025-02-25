@@ -27,17 +27,7 @@
 <br>
 
 <% if @currency_conversion %>
-    <div style="border: solid 1px black">
-        <h4><%= @currency_conversion.conversion_code %></h4>
-        <p>
-            <span><strong>Code: </strong><%= @currency_conversion.code %>;</span>
-            <span><strong>Codein: </strong><%= @currency_conversion.codein %>;</span>
-            <span><strong>High: </strong><%= @currency_conversion.high %>;</span>
-            <span><strong>Low: </strong><%= @currency_conversion.low %>.</span>
-        </p>
-        <%# TODO: Create UserCurrencyConversion %>
-        <%= button_to "Add to Portfolio",  "/"%>
-    </div>
+    <%= render "currency_conversions/search_result" %>
 <% end %>
 
 

@@ -30,10 +30,6 @@ class CurrencyConversion < ApplicationRecord
 
         return CurrencyConversion.last  
       end
-
-    else
-      # TODO: return JSON response || return false
-      puts(response)
     end
   end
 end
