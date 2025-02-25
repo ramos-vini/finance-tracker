@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+        <th>Code</th>
+        <th>High</th>
+        <th>Low</th>
+        <th>Last updated at</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @currency_conversions.each do |currency_conversion| %>
+            <tr>
+                <th><%= currency_conversion.conversion_code %></th>
+                <td><%= currency_conversion.high %></td>
+                <td><%= currency_conversion.low %></td>
+                <td><%= currency_conversion.last_updated_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,4 +1,10 @@
 <h1>My Portfolio</h1>
+<code>[<%= current_user.email %>]</code>
+<br><br>
+
+<% if @currency_conversions && !@currency_conversions.empty? %>
+    <%= render "currency_conversions/table" %>
+<% end %>
 
 <h3>Search for a Currency Conversion:</h3>
 
@@ -29,7 +35,10 @@
             <span><strong>High: </strong><%= @currency_conversion.high %>;</span>
             <span><strong>Low: </strong><%= @currency_conversion.low %>.</span>
         </p>
+        <%# TODO: Create UserCurrencyConversion %>
+        <%= button_to "Add to Portfolio",  "/"%>
     </div>
 <% end %>
+
 
 
