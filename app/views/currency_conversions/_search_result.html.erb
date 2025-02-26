@@ -6,6 +6,9 @@
         <span><strong>High: </strong><%= @currency_conversion.high %>;</span>
         <span><strong>Low: </strong><%= @currency_conversion.low %>.</span>
     </p>
-    <%= button_to "Add to Portfolio", user_currency_conversions_path, 
-    params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id }%>
+    <% user_has_currency_conversion = !UserCurrencyConversion.where(user_id: current_user.id, currency_conversion_id: @currency_conversion.id).empty? %>
+    <% if !user_has_currency_conversion %>
+        <%= button_to "Add to Portfolio", user_currency_conversions_path, 
+        params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id }%>
+    <% end %>
 </div>
