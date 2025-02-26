@@ -1,6 +1,7 @@
 <table>
     <thead>
         <tr>
+        <th></th>
         <th>Code</th>
         <th>High</th>
         <th>Low</th>
@@ -8,8 +9,9 @@
         </tr>
     </thead>
     <tbody>
-        <% @currency_conversions.each do |currency_conversion| %>
+        <% @currency_conversions.each_with_index do |currency_conversion, index| %>
             <tr>
+                <td><%= index + 1 %></td>
                 <th><%= currency_conversion.conversion_code %></th>
                 <td><%= currency_conversion.high %></td>
                 <td><%= currency_conversion.low %></td>

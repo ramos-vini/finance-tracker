@@ -8,7 +8,12 @@
     </p>
     <% user_has_currency_conversion = !UserCurrencyConversion.where(user_id: current_user.id, currency_conversion_id: @currency_conversion.id).empty? %>
     <% if !user_has_currency_conversion %>
-        <%= button_to "Add to Portfolio", user_currency_conversions_path, 
-        params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id }%>
+        <% if current_user.currency_conversion.count >= 10 %>
+            <button disabled=true>Add to Portfolio</button>
+            <span>*<code>You can only track up to 10 Currency Conversions.</code></span>
+        <% else %>
+            <%= button_to "Add to Portfolio", user_currency_conversions_path, 
+            params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id }%>
+        <% end %>
     <% end %>
 </div>
