@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   has_many :user_currency_conversions
   has_many :currency_conversion, through: :user_currency_conversions
+
+  validates :first_name, :last_name, presence: true, length: { minimum: 2, maximum: 20 }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
