@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :user_currency_conversions
   has_many :currency_conversion, through: :user_currency_conversions
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   validates :first_name, :last_name, presence: true, length: { minimum: 2, maximum: 20 }
 
