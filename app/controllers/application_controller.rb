@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  helper_method :is_current_user
 
   protected
 
@@ -12,10 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def is_current_user(user_id)
-    if current_user.id == user_id.to_i
-      return true
-    else
-      return false
-    end
+    return true if current_user.id == user_id.to_i
+  end
+
+  def is_current_user_friend(user_id)
+    return true if current_user.friends.find_by(id: user_id)
   end
 end

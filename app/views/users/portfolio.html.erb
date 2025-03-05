@@ -1,0 +1,7 @@
+<h1><%= @user.full_name %>'s Portfolio</h1>
+
+<% if @currency_conversions && !@currency_conversions.empty? %>
+    <%= render "currency_conversions/table" %>
+<% else %>
+    <p><%= @user.full_name %>'s Portfolio is empty.</p>
+<% end %>

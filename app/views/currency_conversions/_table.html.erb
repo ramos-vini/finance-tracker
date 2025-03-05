@@ -6,7 +6,9 @@
         <th>High</th>
         <th>Low</th>
         <th>Last updated at</th>
-        <th>Actions</th>
+        <% if is_current_user(@user.id) %>
+            <th>Actions</th>
+        <% end %>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +20,9 @@
                 <td><%= currency_conversion.high %></td>
                 <td><%= currency_conversion.low %></td>
                 <td><%= currency_conversion.last_updated_at %></td>
-                <td><%= button_to "Remove", user_currency_conversion_path(user_currency_conversion), data: { turbo_confirm: "Are you sure you want to stop tracking #{currency_conversion.conversion_code}?" }, method: :delete %></td>
+                <% if is_current_user(@user.id) %>
+                    <td><%= button_to "Remove", user_currency_conversion_path(user_currency_conversion), data: { turbo_confirm: "Are you sure you want to stop tracking #{currency_conversion.conversion_code}?" }, method: :delete %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>

@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   get "my_portfolio", to: "users#my_portfolio"
   get "my_friends", to: "users#my_friends"
+  get "users/:id/portfolio", to: "users#portfolio"
+
   get "currency_conversions/search", to: "currency_conversions#search"
 end

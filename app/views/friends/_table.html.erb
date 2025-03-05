@@ -13,7 +13,7 @@
             <tr>
                 <td><%= friend.full_name %></td>
                 <td><%= friend.email %></td>
-                <td>{link}</td>
+                <td><%= link_to "Visit", "/users/#{friend.id}/portfolio" %></td>
                 <td><%= button_to "Stop following", friendship_path(friendship), data: { turbo_confirm: "Are you sure you want to stop following #{friend.full_name}?" }, method: :delete %></td>
             </tr>
         <% end %>
