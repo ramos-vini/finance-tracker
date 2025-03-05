@@ -1,0 +1,21 @@
+<table>
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Portfolio</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @friends.each do |friend| %>
+            <% friendship = Friendship.where(user_id: @user.id, friend_id: friend.id).first %>
+            <tr>
+                <td><%= friend.full_name %></td>
+                <td><%= friend.email %></td>
+                <td>{link}</td>
+                <td><%= button_to "Stop following", friendship_path(friendship), data: { turbo_confirm: "Are you sure you want to stop following #{friend.full_name}?" }, method: :delete %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

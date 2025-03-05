@@ -39,15 +39,4 @@ class UserCurrencyConversionsController < ApplicationController
 
     redirect_to "/my_portfolio"
   end
-
-  private
-
-  # TODO: Check for current_user permissions
-  def is_current_user(user_id)
-    if current_user.id == user_id.to_i
-      return true
-    else
-      return false
-    end
-  end
 end
