@@ -2,9 +2,11 @@
 
 <% if @currency_conversions && !@currency_conversions.empty? %>
     <%= render "currency_conversions/table" %>
+<% else %>
+    <p>Your Portfolio is currently empty.</p>
 <% end %>
 
-<h3>Search for a Currency Conversion:</h3>
+<h2>Search for a Currency Conversion:</h2>
 
 <%= form_with url: currency_conversions_search_path, method: :get do %>
   <% currency_options = ["AUD", "BRL", "CAD", "CHF", "CNY", "EUR", "GBP", "HKD", "INR", "JPY", "KRW", "MXN", "NOK", "NZD", "RUB", "SEK", "SGD", "TRY", "USD", "ZAR",] %>  

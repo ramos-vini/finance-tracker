@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :user_currency_conversions
-  resources :friendships, only: [:destroy]
+  resources :friendships, only: [:create, :destroy]
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "my_portfolio", to: "users#my_portfolio"
   get "my_friends", to: "users#my_friends"
   get "users/:id/portfolio", to: "users#portfolio"
+  get "users/search", to: "users#search"
 
   get "currency_conversions/search", to: "currency_conversions#search"
 end

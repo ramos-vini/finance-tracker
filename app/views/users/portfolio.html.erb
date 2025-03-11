@@ -3,5 +3,5 @@
 <% if @currency_conversions && !@currency_conversions.empty? %>
     <%= render "currency_conversions/table" %>
 <% else %>
-    <p><%= @user.full_name %>'s Portfolio is empty.</p>
+    <p><%= @user.full_name %>'s Portfolio is currently empty.</p>
 <% end %>

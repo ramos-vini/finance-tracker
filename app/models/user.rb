@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def is_friends_with?(user)
+    true if self.friends.find_by(id: user.id)
+  end
 end

@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @searched_users.each do |user| %>
+            <% if user != current_user %>
+                <tr>
+                    <td><%= user.full_name %></td>
+                    <td><%= user.email %></td>
+                    <% if current_user.is_friends_with?(user) %>
+                        <td><button disabled>Following</button></td>
+                    <% else %>
+                        <td><%= button_to "Follow", friendships_path, params: {user_id: current_user.id, friend_id: user.id} %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
+<br>
+<%= will_paginate @searched_users %>

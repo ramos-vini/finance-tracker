@@ -2,4 +2,20 @@
 
 <% if @friends && !@friends.empty? %>
     <%= render "friends/table" %>
+<% else %>
+    <p>Your friends list is currently empty.</p>
+<% end %>
+
+<h2>Search for a new friend:</h2>
+
+<%= form_with url: users_search_path, method: :get do |form| %>
+  <%= form.label :query, "Enter a name/email:" %>
+  <br>
+  <%= form.text_field :query %>
+
+  <%= form.submit "Search" %>
+<% end %>
+<br>
+<% if @searched_users && !@searched_users.empty? %>
+    <%= render "friends/search_result" %>
 <% end %>
