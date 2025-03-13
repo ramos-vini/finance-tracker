@@ -11,11 +11,12 @@ class UsersController < ApplicationController
 
   def portfolio
     @user = User.find_by(id: params[:id])
-    if !(@user && is_current_user_friend(@user.id))
-      flash[:alert] = "You can only see your friends' portfolios."
-      redirect_to "/my_portfolio", allow_other_host: true
+    if !@user
+      flash[:alert] = "You don't have enough permission to perform this action."
+      redirect_to my_friends_path, allow_other_host: true
+    else
+      @currency_conversions = @user.currency_conversion
     end
-    @currency_conversions = @user.currency_conversion
   end
 
   def search

@@ -3,6 +3,7 @@
         <tr>
             <th>Full Name</th>
             <th>Email</th>
+            <th>Portfolio</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,6 +13,7 @@
                 <tr>
                     <td><%= user.full_name %></td>
                     <td><%= user.email %></td>
+                    <td><%= link_to "Show", "/users/#{user.id}/portfolio" %></td>
                     <% if current_user.is_friends_with?(user) %>
                         <td><button disabled>Following</button></td>
                     <% else %>
