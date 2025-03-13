@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def my_friends
     @user = current_user
-    @friends = @user.friends
+    @friends = @user.friends.paginate(page: params[:friends_page], per_page: 10)
   end
 
   def portfolio
@@ -21,10 +21,10 @@ class UsersController < ApplicationController
 
   def search
     @user = current_user
-    @friends = @user.friends
+    @friends = @user.friends.paginate(page: params[:friends_page], per_page: 10)
 
     pattern = "%#{params[:query]}%"
-    @searched_users = User.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", pattern, pattern, pattern).paginate(page: params[:page], per_page: 10)
+    @searched_users = User.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", pattern, pattern, pattern).paginate(page: params[:users_page], per_page: 10)
     render "users/my_friends"
   end
 end
