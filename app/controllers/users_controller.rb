@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to my_friends_path, allow_other_host: true
     else
       @currency_conversions = @user.currency_conversion
+      if @user == current_user then redirect_to my_portfolio_path end
     end
   end
 
