@@ -1,7 +1,17 @@
 <h1><%= @user.full_name %>'s Portfolio</h1>
 
+<% if current_user.is_friends_with?(@user) %>
+    <td><button disabled>Following</button></td>
+<% else %>
+    <td><%= button_to "Follow", friendships_path, params: {user_id: current_user.id, friend_id: @user.id} %></td>
+<% end %>
+
+<br><br><br>
+
 <% if @currency_conversions && !@currency_conversions.empty? %>
     <%= render "currency_conversions/table" %>
 <% else %>
     <p><%= @user.full_name %>'s Portfolio is currently empty.</p>
 <% end %>
+<br>
+<%= link_to "⇐ Return", my_friends_path %>

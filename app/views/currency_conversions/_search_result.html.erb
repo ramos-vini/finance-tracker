@@ -13,7 +13,7 @@
             <span>*<code>You can only track up to 10 Currency Conversions.</code></span>
         <% else %>
             <%= button_to "Add to Portfolio", user_currency_conversions_path, 
-            params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id }%>
+            params: { user_id: current_user.id, currency_conversion_id: @currency_conversion.id } %>
         <% end %>
     <% end %>
 </div>

@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def is_friends_with?(user)
     true if self.friends.find_by(id: user.id)
   end
+
+  def track_currency_conversion?(currency_conversion)
+    true if self.currency_conversion.find_by(id: currency_conversion.id)
+  end
 end
